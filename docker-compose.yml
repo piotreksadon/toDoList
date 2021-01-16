@@ -1,0 +1,11 @@
+--- 
+services: 
+  db: 
+    command: "--default-authentication-plugin=mysql_native_password"
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+    image: mysql
+    ports: 
+      - 3307:3306
+    restart: always
+version: "3.1"
