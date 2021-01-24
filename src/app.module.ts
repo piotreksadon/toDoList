@@ -21,6 +21,7 @@ import { ScheduleModule } from '@nestjs/schedule';
       database: 'todolist',
       entities: [User],
       synchronize: true,
+      logging: true
     }),
     AuthModule,
     UsersModule,

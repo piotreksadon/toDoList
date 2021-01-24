@@ -4,6 +4,7 @@ services:
     command: "--default-authentication-plugin=mysql_native_password"
     environment: 
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: todolist  
     image: mysql
     ports: 
       - 3307:3306

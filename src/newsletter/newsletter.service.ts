@@ -3,11 +3,11 @@ import { Cron } from '@nestjs/schedule';
 
 @Injectable()
 export class NewsletterService {
-    @Cron('*/5 * * * * *', {
-        name: 'notifications',
-        timeZone: 'Europe/Paris',
-      })
-      triggerNotifications() {
-        console.log('Rozsyłam powiadomienia!')
-      }
+    // @Cron('*/5 * * * * *', {
+    //     name: 'notifications',
+    //     timeZone: 'Europe/Paris',
+    //   })
+    //   triggerNotifications() {
+    //     console.log('Rozsyłam powiadomienia!')
+    //   }
 };
