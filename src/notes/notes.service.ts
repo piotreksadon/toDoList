@@ -4,14 +4,16 @@ import { Repository } from 'typeorm';
 import { CreateNoteDto } from './dto/create-note.dto';
 import { UpdateNoteDto } from './dto/update-note.dto';
 import { Note } from './entities/notes.entity';
+import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class NotesService {
   constructor(
     @InjectRepository(Note)
-    private readonly notesRepository: Repository<Note>,
+    private notesRepository: Repository<Note>,
   ) {}
-  
+
+
   create(noteData: CreateNoteDto) {
     const note = new Note()
     console.log(note)
