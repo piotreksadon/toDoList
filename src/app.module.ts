@@ -4,11 +4,13 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
-import { Connection } from 'typeorm';
 import { User } from './users/entities/user.entity';
-import { UsersController } from './users/users.controller';
 import { NewsletterService } from './newsletter/newsletter.service';
 import { ScheduleModule } from '@nestjs/schedule';
+import { NotesController } from './notes/notes.controller';
+import { NotesService } from './notes/notes.service';
+import { Note } from './notes/entities/notes.entity';
+
 
 @Module({
   imports: [
@@ -19,7 +21,7 @@ import { ScheduleModule } from '@nestjs/schedule';
       username: 'root',
       password: 'root',
       database: 'todolist',
-      entities: [User],
+      entities: [User, Note],
       synchronize: true,
       logging: true
     }),
@@ -27,7 +29,7 @@ import { ScheduleModule } from '@nestjs/schedule';
     UsersModule,
     ScheduleModule.forRoot()
   ],
-  controllers: [AppController],
-  providers: [AppService, NewsletterService],
+  controllers: [AppController, NotesController],
+  providers: [AppService, NewsletterService, NotesService],
 })
 export class AppModule { }
