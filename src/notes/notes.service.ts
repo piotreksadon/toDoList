@@ -4,7 +4,6 @@ import { Repository } from 'typeorm';
 import { CreateNoteDto } from './dto/create-note.dto';
 import { UpdateNoteDto } from './dto/update-note.dto';
 import { Note } from './entities/notes.entity';
-import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class NotesService {
@@ -14,12 +13,10 @@ export class NotesService {
   ) {}
 
 
-  create(noteData: CreateNoteDto) {
-    const note = new Note()
-    console.log(note)
-    // return this.notesRepository.save({
-    //   yourNote: noteData.noteContent,
-    // });
+  create(noteData: any) {
+      const model = new Note
+      model.noteContent = noteData.note
+    return this.notesRepository.save(model);
   }
 
   findAll() {
@@ -31,10 +28,10 @@ export class NotesService {
     return this.notesRepository.findOne(+id);
   }
 
-  update(id: number, noteBody: UpdateNoteDto) {
+  update(id: number, noteUpdate: UpdateNoteDto) {
     return this.notesRepository.save({
       id: id,
-      yourNote: noteBody.noteContent,
+      yourNote: noteUpdate.noteContent,
     });
   }
 

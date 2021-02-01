@@ -6,11 +6,12 @@ import { NotesService } from './notes.service';
 
 @Controller('v1/notes')
 export class NotesController {
-  constructor(private readonly notesService: NotesService) {}
+  constructor(private notesService: NotesService) {}
 
   @Post()
-  create(@Body() body: CreateNoteDto) {
-    return this.notesService.create(body);
+  create(@Body() data: any) {
+      console.log(data)
+    return this.notesService.create(data);
   }
 
   @Get()
@@ -18,12 +19,12 @@ export class NotesController {
     return this.notesService.findAll();
   }
 
-  @Get('v1/notes/:id')
+  @Get(':id')
   findOne(@Param() params: {id: string}) {
     return this.notesService.findOne(+params.id);
   }
 
-  @Put('v1/notes/put/:id')
+  @Put('put/:id')
   update(@Param() params: {id:string}, @Body() body: UpdateNoteDto) {
     return this.notesService.update(+params.id, body);
   }
