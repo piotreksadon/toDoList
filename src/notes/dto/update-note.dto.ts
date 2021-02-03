@@ -1,5 +1,5 @@
 import { CreateNoteDto } from './create-note.dto';
 
-export class UpdateNoteDto {
+export interface UpdateNoteDto {
     noteContent: string;
 }

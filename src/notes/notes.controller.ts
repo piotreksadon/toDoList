@@ -2,6 +2,8 @@ import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common'
 import { UpdateNoteDto } from './dto/update-note.dto';
 import { CreateNoteDto } from './dto/create-note.dto';
 import { NotesService } from './notes.service';
+import { Debt } from './cheat-sheet';
+
 
 
 @Controller('v1/notes')
@@ -13,6 +15,22 @@ export class NotesController {
       console.log(data)
     return this.notesService.create(data);
   }
+
+  @Post('debt')
+  test(@Body() data: CreateNoteDto){
+    const userFee: Debt = {
+        userName: data.userName,
+        userSecName: data.userSecName,
+        userLastName: data.userLastName,
+        howMuchHeOwes: (amount) => {
+            return `${userFee.userName} owes ${amount} zł.`
+        }
+    }
+    console.log(userFee.howMuchHeOwes(300))
+    console.log(userFee)
+    return userFee
+  } 
+  
 
   @Get()
   findAll(){
